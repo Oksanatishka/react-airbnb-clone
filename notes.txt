@@ -1,0 +1,92 @@
+P.S. This is mostly a front-end build. If we were to build a full back-end and database and everything
+that would take billion hours.
+https://github.com/CleverProgrammer/airbnb-clone
+
+- Material UI
+    // being used across so that's why you get those nice looking buttons at the top
+    // but we've got this reusable component that we show several times for the results
+- React Hooks
+    // to get everything managed within the state we're using
+- React Router 
+    // hit the search button it actually pushed us over to the search page so you can see in the
+    // url it says forward slash search
+- Firebase Hosting
+    // to deploy this thing s
+- Flexbox
+- Responsive AF!
+- Grow / Shrink Animation
+- CSS game is strong
+- React Date picker
+-------------------------------------------------------------------------------------------------------
+
+1) Install App
+> npx create-react-app airbnb-clone     // Details: https://reactjs.org/docs/create-a-new-react-app.html
+> cd airbnb-clone
+> npm start
+
+2) Set up Firebase
+
+3) Remove unnecessary default styles and functionality
+    - comment out styles in App.js
+    - remove logo.svg, App.test.js, setupTests.js
+    - in App.js remove <header> tag & its import
+    - rename className="App" to "app" & add <h1>Let's build Airbnb!</h1> inside div
+    - in index.css add *{margin:0}
+
+4) Build Header, Banner, Cards, Footer components inside of Home component.
+        Home
+            Header
+            Banner
+                Search
+            Cards
+            Footer
+        SearchPage
+
+// rfce from ES7 snippets??
+
+/src/App.js
+    - add Home component: import & insert it.
+        /src/Home.js
+        - rsc to get functional component skeleton
+        - add className="home" to div
+        - import './Home.css';
+            - create /src/Home.css
+        - add <h1>Home Component</h1> inside div
+        - add Banner component
+            - add Search component (Date Picker component)
+                > npm i react-date-range        // Details: https://www.npmjs.com/package/react-date-range
+                > npm i date-fns                // To fix issue: 'useState' is not defined  no-undef
+
+    - add Header component
+        > npm install @material-ui/core     // Details: https://material-ui.com/ru/getting-started/installation/
+        > npm install @material-ui/icons    // List of icons: https://material-ui.com/ru/components/material-icons/
+            - 'globe' icon
+            - 'down' icon
+            - 'search' icon
+    
+    - add Cards component
+    - add Footer component
+    - add Header component
+
+> npm i react-router-dom    // to setup React Router for Airbnb build: { BrowserRouter as Router, Switch, Route }
+
+/src/SearchPage.js  
+
+
+To monetize React app use react-adsense package https://www.npmjs.com/package/react-adsense
+
+5) Deploy to Firebase // https://www.robinwieruch.de/firebase-deploy-react-js
+> sudo npm i -g firebase-tools
+> firebase login
+> firebase init         // Choose 'Hosting' -> 'Use an exisitng project' -> 
+                        // -> What do you want to use as your public directory? - build -> y -> you'll see 'build' folder in your project
+> npm run build 
+> firebase deploy       // Open 'Hosting URL'
+
+
+Q&A
+Q.  How do you troubleshoot unnecessary rendering? Many times in react i find many components re-render due to like passing either inline generated function or object configuration like styles?
+A.  So my first bit of advice is switch to a functional component.
+    So when you have a class based component a lot of the stuff when it comes down to what's re-rendering what's not re-rendering can get confusing it can get very confusing as to what's actually happening.
+    So by switching to a functional component and using the use effect hook instead of using the life cycle methods it will allow you to control that re-rendering a lot easier.
+    User effects are a lot more sort of you can see what's going on it's very clear as to what's happening.
